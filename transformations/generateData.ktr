@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>Generate Data</name>
+    <name>generateData</name>
     <description/>
     <extended_description/>
     <trans_version/>
@@ -438,34 +438,24 @@
   </notepads>
   <order>
     <hop>
-      <from>Read config file</from>
-      <to>Add constants</to>
+      <from>Get File Names</from>
+      <to>Select values</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Add constants</from>
-      <to>Replace in string</to>
+      <from>Select values</from>
+      <to>Unique rows</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Filter rows</from>
-      <to>Dummy &#x28;do nothing&#x29;</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Filter rows</from>
+      <from>Unique rows</from>
       <to>Transformation Executor</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Replace in string</from>
-      <to>Filter rows</to>
       <enabled>Y</enabled>
     </hop>
   </order>
   <step>
-    <name>Add constants</name>
-    <type>Constant</type>
+    <name>Get File Names</name>
+    <type>GetFileNames</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -474,114 +464,41 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <fields>
-      <field>
-        <name>PermissionLocationBase</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>&#x24;&#x7b;Internal.Transformation.Filename.Directory&#x7d;&#x2f;..&#x2f;input&#x2f;&#x5b;branch&#x5d;&#x2f;</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>FileNameWildCard</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>.&#x2a;.permissionset</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-    </fields>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>192</xloc>
-      <yloc>80</yloc>
-      <draw>Y</draw>
-    </GUI>
-    </step>
-
-  <step>
-    <name>Read config file</name>
-    <type>JsonInput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <include>N</include>
-    <include_field/>
+    <filter>
+      <filterfiletype>only_files</filterfiletype>
+    </filter>
+    <doNotFailIfNoFile>N</doNotFailIfNoFile>
     <rownum>N</rownum>
-    <addresultfile>N</addresultfile>
-    <readurl>N</readurl>
-    <removeSourceField>N</removeSourceField>
-    <IsIgnoreEmptyFile>N</IsIgnoreEmptyFile>
-    <doNotFailIfNoFile>Y</doNotFailIfNoFile>
-    <ignoreMissingPath>N</ignoreMissingPath>
+    <isaddresult>Y</isaddresult>
+    <filefield>N</filefield>
     <rownum_field/>
+    <filename_Field/>
+    <wildcard_Field/>
+    <exclude_wildcard_Field/>
+    <dynamic_include_subfolders>N</dynamic_include_subfolders>
+    <limit>0</limit>
     <file>
-      <name>&#x24;&#x7b;Internal.Transformation.Filename.Directory&#x7d;&#x5c;..&#x5c;input&#x5c;setup.json</name>
-      <filemask/>
+      <name>C&#x3a;&#x5c;ETL&#x5c;PMI&#x5c;PermissionSetComparisson&#x5c;input&#x5c;Fiedev1&#x5c;</name>
+      <filemask>.&#x2a;permissionset&#x24;</filemask>
+      <exclude_filemask/>
+      <file_required>N</file_required>
+      <include_subfolders>N</include_subfolders>
+      <name>C&#x3a;&#x5c;ETL&#x5c;PMI&#x5c;PermissionSetComparisson&#x5c;input&#x5c;FIELOInt&#x5c;</name>
+      <filemask>.&#x2a;permissionset&#x24;</filemask>
+      <exclude_filemask/>
+      <file_required>N</file_required>
+      <include_subfolders>N</include_subfolders>
+      <name>C&#x3a;&#x5c;ETL&#x5c;PMI&#x5c;PermissionSetComparisson&#x5c;input&#x5c;MasterIntegration&#x5c;</name>
+      <filemask>.&#x2a;permissionset&#x24;</filemask>
+      <exclude_filemask/>
+      <file_required>N</file_required>
+      <include_subfolders>N</include_subfolders>
+      <name>C&#x3a;&#x5c;ETL&#x5c;PMI&#x5c;PermissionSetComparisson&#x5c;input&#x5c;Production&#x5c;</name>
+      <filemask>.&#x2a;permissionset&#x24;</filemask>
       <exclude_filemask/>
       <file_required>N</file_required>
       <include_subfolders>N</include_subfolders>
     </file>
-    <fields>
-      <field>
-        <name>Directory</name>
-        <path>&#x24;.branch&#x5b;&#x2a;&#x5d;.dir</path>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>BranchName</name>
-        <path>&#x24;.branch&#x5b;&#x2a;&#x5d;.name</path>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-    </fields>
-    <limit>0</limit>
-    <IsInFields>N</IsInFields>
-    <IsAFile>N</IsAFile>
-    <valueField/>
-    <shortFileFieldName/>
-    <pathFieldName/>
-    <hiddenFieldName/>
-    <lastModificationTimeFieldName/>
-    <uriNameFieldName/>
-    <rootUriNameFieldName/>
-    <extensionFieldName/>
-    <sizeFieldName/>
     <cluster_schema/>
     <remotesteps>
       <input>
@@ -590,106 +507,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>80</xloc>
-      <yloc>80</yloc>
-      <draw>Y</draw>
-    </GUI>
-    </step>
-
-  <step>
-    <name>Replace in string</name>
-    <type>ReplaceString</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <in_stream_name>PermissionLocationBase</in_stream_name>
-        <out_stream_name>PermissionLocation</out_stream_name>
-        <use_regex>no</use_regex>
-        <replace_string>&#x5b;branch&#x5d;</replace_string>
-        <replace_by_string/>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string>Directory</replace_field_by_string>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-      </field>
-    </fields>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>304</xloc>
-      <yloc>80</yloc>
-      <draw>Y</draw>
-    </GUI>
-    </step>
-
-  <step>
-    <name>Filter rows</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-<send_true_to>Transformation Executor</send_true_to>
-<send_false_to>Dummy &#x28;do nothing&#x29;</send_false_to>
-    <compare>
-<condition>
- <negated>Y</negated>
- <leftvalue>Directory</leftvalue>
- <function>&#x3d;</function>
- <rightvalue/>
- <value><name>constant</name><type>String</type><text>branch1</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value> </condition>
-    </compare>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>528</xloc>
-      <yloc>80</yloc>
-      <draw>Y</draw>
-    </GUI>
-    </step>
-
-  <step>
-    <name>Dummy &#x28;do nothing&#x29;</name>
-    <type>Dummy</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>528</xloc>
-      <yloc>176</yloc>
+      <xloc>64</xloc>
+      <yloc>64</yloc>
       <draw>Y</draw>
     </GUI>
     </step>
@@ -714,8 +533,6 @@
     <group_field/>
     <group_time/>
           <parameters>       <variablemapping><variable>file</variable><field>short_filename</field><input/></variablemapping>
-       <variablemapping><variable>targetBranch</variable><field>BranchName</field><input/></variablemapping>
-       <variablemapping><variable>targetDir</variable><field>Directory</field><input/></variablemapping>
     <inherit_all_vars>Y</inherit_all_vars>
     </parameters>
     <execution_result_target_step/>
@@ -745,15 +562,15 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>640</xloc>
-      <yloc>80</yloc>
+      <xloc>416</xloc>
+      <yloc>64</yloc>
       <draw>Y</draw>
     </GUI>
     </step>
 
   <step>
-    <name>Modified Java Script Value</name>
-    <type>ScriptValueMod</type>
+    <name>Unique rows</name>
+    <type>Unique</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -762,12 +579,13 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>&#x2f;&#x2f;Script here&#xd;&#xa;&#xd;&#xa;Alert&#x28;filename&#x29;</jsScript_script>
-      </jsScript>    </jsScripts>    <fields>    </fields>    <cluster_schema/>
+      <count_rows>N</count_rows>
+      <count_field/>
+      <reject_duplicate_row>N</reject_duplicate_row>
+      <error_description/>
+    <fields>      <field>        <name>short_filename</name>
+        <case_insensitive>N</case_insensitive>
+        </field>      </fields>    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -775,8 +593,36 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>144</xloc>
-      <yloc>160</yloc>
+      <xloc>272</xloc>
+      <yloc>64</yloc>
+      <draw>Y</draw>
+    </GUI>
+    </step>
+
+  <step>
+    <name>Select values</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>      <field>        <name>short_filename</name>
+        <rename/>
+      </field>        <select_unspecified>N</select_unspecified>
+    </fields>    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>176</xloc>
+      <yloc>64</yloc>
       <draw>Y</draw>
     </GUI>
     </step>

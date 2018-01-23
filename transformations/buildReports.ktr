@@ -453,413 +453,106 @@
   </notepads>
   <order>
     <hop>
-      <from>Get data from XML</from>
-      <to>Sort rows</to>
+      <from>Production</from>
+      <to>Empty Stream I</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Compare Branch</from>
-      <to>Sort rows 2</to>
+      <from>MasterIntegration</from>
+      <to>Empty Stream II</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Sort rows</from>
-      <to>Row Normaliser</to>
+      <from>FIELOInt</from>
+      <to>Empty Stream III</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Sort rows 2</from>
-      <to>Row Normaliser 2</to>
+      <from>Fiedev1</from>
+      <to>Empty Stream IV</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Select values</from>
-      <to>Microsoft Excel Writer</to>
+      <from>Production</from>
+      <to>Output I</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Compare Branch 2</from>
-      <to>Sort rows 2 2</to>
+      <from>Empty Stream I</from>
+      <to>Output I</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Get data from XML 2</from>
-      <to>Sort rows 3</to>
+      <from>MasterIntegration</from>
+      <to>Output II</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Sort rows 3</from>
-      <to>Row Normaliser 3</to>
+      <from>Empty Stream II</from>
+      <to>Output II</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Sort rows 2 2</from>
-      <to>Row Normaliser 4</to>
+      <from>FIELOInt</from>
+      <to>Output III</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Row Normaliser</from>
+      <from>Empty Stream III</from>
+      <to>Output III</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fiedev1</from>
+      <to>Output IV</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Empty Stream IV</from>
+      <to>Output IV</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Output II</from>
       <to>Multiway Merge Join</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Row Normaliser 2</from>
+      <from>Output III</from>
       <to>Multiway Merge Join</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Row Normaliser 3</from>
+      <from>Output IV</from>
       <to>Multiway Merge Join</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Row Normaliser 4</from>
+      <from>Output I</from>
       <to>Multiway Merge Join</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Multiway Merge Join</from>
-      <to>Select values</to>
+      <to>Remove Columns</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Remove Columns</from>
+      <to>Filter rows</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Filter rows</from>
+      <to>Dummy &#x28;do nothing&#x29;</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Filter rows</from>
+      <to>Microsoft Excel Writer</to>
       <enabled>Y</enabled>
     </hop>
   </order>
-  <step>
-    <name>Compare Branch</name>
-    <type>getXMLData</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <include>N</include>
-    <include_field/>
-    <rownum>N</rownum>
-    <addresultfile>N</addresultfile>
-    <namespaceaware>N</namespaceaware>
-    <ignorecomments>N</ignorecomments>
-    <readurl>N</readurl>
-    <validating>N</validating>
-    <usetoken>N</usetoken>
-    <IsIgnoreEmptyFile>N</IsIgnoreEmptyFile>
-    <doNotFailIfNoFile>Y</doNotFailIfNoFile>
-    <rownum_field/>
-    <encoding>UTF-8</encoding>
-    <file>
-      <name>C&#x3a;&#x5c;ETL&#x5c;PMI&#x5c;PermissionSetComparisson&#x5c;input&#x5c;branch2&#x5c;&#x24;&#x7b;file&#x7d;</name>
-      <filemask/>
-      <exclude_filemask/>
-      <file_required>N</file_required>
-      <include_subfolders>N</include_subfolders>
-    </file>
-    <fields>
-      <field>
-        <name>allowCreate</name>
-        <xpath>&#x2a;&#x5b;name&#x28;&#x29;&#x3d;&#x27;allowCreate&#x27;&#x5d;</xpath>
-        <element_type>node</element_type>
-        <result_type>valueof</result_type>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>allowDelete</name>
-        <xpath>&#x2a;&#x5b;name&#x28;&#x29;&#x3d;&#x27;allowDelete&#x27;&#x5d;</xpath>
-        <element_type>node</element_type>
-        <result_type>valueof</result_type>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>allowEdit</name>
-        <xpath>&#x2a;&#x5b;name&#x28;&#x29;&#x3d;&#x27;allowEdit&#x27;&#x5d;</xpath>
-        <element_type>node</element_type>
-        <result_type>valueof</result_type>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>allowRead</name>
-        <xpath>&#x2a;&#x5b;name&#x28;&#x29;&#x3d;&#x27;allowRead&#x27;&#x5d;</xpath>
-        <element_type>node</element_type>
-        <result_type>valueof</result_type>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>modifyAllRecords</name>
-        <xpath>&#x2a;&#x5b;name&#x28;&#x29;&#x3d;&#x27;modifyAllRecords&#x27;&#x5d;</xpath>
-        <element_type>node</element_type>
-        <result_type>valueof</result_type>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>object</name>
-        <xpath>&#x2a;&#x5b;name&#x28;&#x29;&#x3d;&#x27;object&#x27;&#x5d;</xpath>
-        <element_type>node</element_type>
-        <result_type>valueof</result_type>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>viewAllRecords</name>
-        <xpath>&#x2a;&#x5b;name&#x28;&#x29;&#x3d;&#x27;viewAllRecords&#x27;&#x5d;</xpath>
-        <element_type>node</element_type>
-        <result_type>valueof</result_type>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-    </fields>
-    <limit>0</limit>
-    <loopxpath>&#x2f;&#x2a;&#x5b;name&#x28;&#x29;&#x3d;&#x27;PermissionSet&#x27;&#x5d;&#x2f;&#x2a;&#x5b;name&#x28;&#x29;&#x3d;&#x27;objectPermissions&#x27;&#x5d;</loopxpath>
-    <IsInFields>N</IsInFields>
-    <IsAFile>N</IsAFile>
-    <XmlField/>
-    <prunePath/>
-    <shortFileFieldName/>
-    <pathFieldName/>
-    <hiddenFieldName/>
-    <lastModificationTimeFieldName/>
-    <uriNameFieldName/>
-    <rootUriNameFieldName/>
-    <extensionFieldName/>
-    <sizeFieldName/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>64</xloc>
-      <yloc>128</yloc>
-      <draw>Y</draw>
-    </GUI>
-    </step>
-
-  <step>
-    <name>Get data from XML</name>
-    <type>getXMLData</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <include>N</include>
-    <include_field/>
-    <rownum>N</rownum>
-    <addresultfile>N</addresultfile>
-    <namespaceaware>N</namespaceaware>
-    <ignorecomments>N</ignorecomments>
-    <readurl>N</readurl>
-    <validating>N</validating>
-    <usetoken>N</usetoken>
-    <IsIgnoreEmptyFile>N</IsIgnoreEmptyFile>
-    <doNotFailIfNoFile>Y</doNotFailIfNoFile>
-    <rownum_field/>
-    <encoding>UTF-8</encoding>
-    <file>
-      <name>C&#x3a;&#x5c;ETL&#x5c;PMI&#x5c;PermissionSetComparisson&#x5c;input&#x5c;branch1&#x5c;&#x24;&#x7b;file&#x7d;</name>
-      <filemask/>
-      <exclude_filemask/>
-      <file_required>N</file_required>
-      <include_subfolders>N</include_subfolders>
-      <name/>
-      <filemask/>
-      <exclude_filemask/>
-      <file_required>N</file_required>
-      <include_subfolders>N</include_subfolders>
-    </file>
-    <fields>
-      <field>
-        <name>allowCreate</name>
-        <xpath>&#x2a;&#x5b;name&#x28;&#x29;&#x3d;&#x27;allowCreate&#x27;&#x5d;</xpath>
-        <element_type>node</element_type>
-        <result_type>valueof</result_type>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>allowDelete</name>
-        <xpath>&#x2a;&#x5b;name&#x28;&#x29;&#x3d;&#x27;allowDelete&#x27;&#x5d;</xpath>
-        <element_type>node</element_type>
-        <result_type>valueof</result_type>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>allowEdit</name>
-        <xpath>&#x2a;&#x5b;name&#x28;&#x29;&#x3d;&#x27;allowEdit&#x27;&#x5d;</xpath>
-        <element_type>node</element_type>
-        <result_type>valueof</result_type>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>allowRead</name>
-        <xpath>&#x2a;&#x5b;name&#x28;&#x29;&#x3d;&#x27;allowRead&#x27;&#x5d;</xpath>
-        <element_type>node</element_type>
-        <result_type>valueof</result_type>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>modifyAllRecords</name>
-        <xpath>&#x2a;&#x5b;name&#x28;&#x29;&#x3d;&#x27;modifyAllRecords&#x27;&#x5d;</xpath>
-        <element_type>node</element_type>
-        <result_type>valueof</result_type>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>object</name>
-        <xpath>&#x2a;&#x5b;name&#x28;&#x29;&#x3d;&#x27;object&#x27;&#x5d;</xpath>
-        <element_type>node</element_type>
-        <result_type>valueof</result_type>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>viewAllRecords</name>
-        <xpath>&#x2a;&#x5b;name&#x28;&#x29;&#x3d;&#x27;viewAllRecords&#x27;&#x5d;</xpath>
-        <element_type>node</element_type>
-        <result_type>valueof</result_type>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-    </fields>
-    <limit>0</limit>
-    <loopxpath>&#x2f;&#x2a;&#x5b;name&#x28;&#x29;&#x3d;&#x27;PermissionSet&#x27;&#x5d;&#x2f;&#x2a;&#x5b;name&#x28;&#x29;&#x3d;&#x27;objectPermissions&#x27;&#x5d;</loopxpath>
-    <IsInFields>N</IsInFields>
-    <IsAFile>N</IsAFile>
-    <XmlField/>
-    <prunePath/>
-    <shortFileFieldName/>
-    <pathFieldName/>
-    <hiddenFieldName/>
-    <lastModificationTimeFieldName/>
-    <uriNameFieldName/>
-    <rootUriNameFieldName/>
-    <extensionFieldName/>
-    <sizeFieldName/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>64</xloc>
-      <yloc>32</yloc>
-      <draw>Y</draw>
-    </GUI>
-    </step>
-
   <step>
     <name>Microsoft Excel Writer</name>
     <type>TypeExitExcelWriterStep</type>
@@ -912,6 +605,18 @@
     </template>
     <fields>
       <field>
+        <name>Section</name>
+        <type>String</type>
+        <format/>
+        <title/>
+        <titleStyleCell/>
+        <styleCell/>
+        <commentField/>
+        <commentAuthorField/>
+        <formula>N</formula>
+        <hyperlinkField/>
+      </field>
+      <field>
         <name>object</name>
         <type>String</type>
         <format/>
@@ -924,7 +629,7 @@
         <hyperlinkField/>
       </field>
       <field>
-        <name>typefield</name>
+        <name>property</name>
         <type>String</type>
         <format/>
         <title/>
@@ -936,7 +641,7 @@
         <hyperlinkField/>
       </field>
       <field>
-        <name>branch1</name>
+        <name>Production</name>
         <type>Boolean</type>
         <format/>
         <title/>
@@ -948,7 +653,7 @@
         <hyperlinkField/>
       </field>
       <field>
-        <name>branch2</name>
+        <name>MasterIntegration</name>
         <type>Boolean</type>
         <format/>
         <title/>
@@ -960,7 +665,7 @@
         <hyperlinkField/>
       </field>
       <field>
-        <name>branch3</name>
+        <name>FIELOInt</name>
         <type>Boolean</type>
         <format/>
         <title/>
@@ -972,7 +677,7 @@
         <hyperlinkField/>
       </field>
       <field>
-        <name>branch4</name>
+        <name>Fiedev1</name>
         <type>Boolean</type>
         <format/>
         <title/>
@@ -992,15 +697,15 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>720</xloc>
+      <xloc>672</xloc>
       <yloc>192</yloc>
       <draw>Y</draw>
     </GUI>
     </step>
 
   <step>
-    <name>Row Normaliser</name>
-    <type>Normaliser</type>
+    <name>Empty Stream I</name>
+    <type>DetectEmptyStream</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -1009,26 +714,7 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-   <typefield>typefield</typefield>
-    <fields>      <field>        <name>allowCreate</name>
-        <value>allowCreate</value>
-        <norm>branch1</norm>
-        </field>      <field>        <name>allowDelete</name>
-        <value>allowDelete</value>
-        <norm>branch1</norm>
-        </field>      <field>        <name>allowEdit</name>
-        <value>allowEdit</value>
-        <norm>branch1</norm>
-        </field>      <field>        <name>allowRead</name>
-        <value>allowRead</value>
-        <norm>branch1</norm>
-        </field>      <field>        <name>modifyAllRecords</name>
-        <value>modifyAllRecords</value>
-        <norm>branch1</norm>
-        </field>      <field>        <name>viewAllRecords</name>
-        <value>viewAllRecords</value>
-        <norm>branch1</norm>
-        </field>      </fields>    <cluster_schema/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -1036,15 +722,15 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>288</xloc>
-      <yloc>32</yloc>
+      <xloc>144</xloc>
+      <yloc>64</yloc>
       <draw>Y</draw>
     </GUI>
     </step>
 
   <step>
-    <name>Row Normaliser 2</name>
-    <type>Normaliser</type>
+    <name>Empty Stream II</name>
+    <type>DetectEmptyStream</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -1053,26 +739,7 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-   <typefield>typefield</typefield>
-    <fields>      <field>        <name>allowCreate</name>
-        <value>allowCreate</value>
-        <norm>branch2</norm>
-        </field>      <field>        <name>allowDelete</name>
-        <value>allowDelete</value>
-        <norm>branch2</norm>
-        </field>      <field>        <name>allowEdit</name>
-        <value>allowEdit</value>
-        <norm>branch2</norm>
-        </field>      <field>        <name>allowRead</name>
-        <value>allowRead</value>
-        <norm>branch2</norm>
-        </field>      <field>        <name>modifyAllRecords</name>
-        <value>modifyAllRecords</value>
-        <norm>branch2</norm>
-        </field>      <field>        <name>viewAllRecords</name>
-        <value>viewAllRecords</value>
-        <norm>branch2</norm>
-        </field>      </fields>    <cluster_schema/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -1080,15 +747,65 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>288</xloc>
-      <yloc>128</yloc>
+      <xloc>144</xloc>
+      <yloc>176</yloc>
       <draw>Y</draw>
     </GUI>
     </step>
 
   <step>
-    <name>Select values</name>
-    <type>SelectValues</type>
+    <name>Empty Stream III</name>
+    <type>DetectEmptyStream</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>144</xloc>
+      <yloc>288</yloc>
+      <draw>Y</draw>
+    </GUI>
+    </step>
+
+  <step>
+    <name>Empty Stream IV</name>
+    <type>DetectEmptyStream</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>144</xloc>
+      <yloc>416</yloc>
+      <draw>Y</draw>
+    </GUI>
+    </step>
+
+  <step>
+    <name>Production</name>
+    <type>Mapping</type>
     <description/>
     <distribute>N</distribute>
     <custom_distribution/>
@@ -1097,13 +814,224 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
+    <specification_method>filename</specification_method>
+    <trans_object_id/>
+    <trans_name/>
+    <filename>&#x2f;&#x2f;&#x2f;C&#x3a;&#x2f;ETL&#x2f;PMI&#x2f;PermissionSetComparisson&#x2f;transformations&#x2f;readPermissionSet.ktr</filename>
+    <directory_path/>
+    <mappings>
+      <input>
+    <mapping>    <input_step/>
+    <output_step/>
+    <main_path>Y</main_path>
+    <rename_on_output>Y</rename_on_output>
+    <description/>
+    </mapping>      </input>
+      <output>
+    <mapping>    <input_step/>
+    <output_step/>
+    <main_path>Y</main_path>
+    <rename_on_output>N</rename_on_output>
+    <description/>
+    </mapping>      </output>
+          <parameters>       <variablemapping><variable>file</variable><input>&#x24;&#x7b;file&#x7d;</input></variablemapping>
+       <variablemapping><variable>branch</variable><input>Production</input></variablemapping>
+    <inherit_all_vars>Y</inherit_all_vars>
+    </parameters>
+    </mappings>
+    <allow_multiple_input>N</allow_multiple_input>
+    <allow_multiple_output>N</allow_multiple_output>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>80</xloc>
+      <yloc>16</yloc>
+      <draw>Y</draw>
+    </GUI>
+    </step>
+
+  <step>
+    <name>MasterIntegration</name>
+    <type>Mapping</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <specification_method>filename</specification_method>
+    <trans_object_id/>
+    <trans_name/>
+    <filename>&#x2f;&#x2f;&#x2f;C&#x3a;&#x2f;ETL&#x2f;PMI&#x2f;PermissionSetComparisson&#x2f;transformations&#x2f;readPermissionSet.ktr</filename>
+    <directory_path/>
+    <mappings>
+      <input>
+    <mapping>    <input_step/>
+    <output_step/>
+    <main_path>Y</main_path>
+    <rename_on_output>Y</rename_on_output>
+    <description/>
+    </mapping>      </input>
+      <output>
+    <mapping>    <input_step/>
+    <output_step/>
+    <main_path>Y</main_path>
+    <rename_on_output>N</rename_on_output>
+    <description/>
+    </mapping>      </output>
+          <parameters>       <variablemapping><variable>file</variable><input>&#x24;&#x7b;file&#x7d;</input></variablemapping>
+       <variablemapping><variable>branch</variable><input>MasterIntegration</input></variablemapping>
+    <inherit_all_vars>Y</inherit_all_vars>
+    </parameters>
+    </mappings>
+    <allow_multiple_input>N</allow_multiple_input>
+    <allow_multiple_output>N</allow_multiple_output>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>80</xloc>
+      <yloc>128</yloc>
+      <draw>Y</draw>
+    </GUI>
+    </step>
+
+  <step>
+    <name>FIELOInt</name>
+    <type>Mapping</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <specification_method>filename</specification_method>
+    <trans_object_id/>
+    <trans_name/>
+    <filename>&#x2f;&#x2f;&#x2f;C&#x3a;&#x2f;ETL&#x2f;PMI&#x2f;PermissionSetComparisson&#x2f;transformations&#x2f;readPermissionSet.ktr</filename>
+    <directory_path/>
+    <mappings>
+      <input>
+    <mapping>    <input_step/>
+    <output_step/>
+    <main_path>Y</main_path>
+    <rename_on_output>Y</rename_on_output>
+    <description/>
+    </mapping>      </input>
+      <output>
+    <mapping>    <input_step/>
+    <output_step/>
+    <main_path>Y</main_path>
+    <rename_on_output>N</rename_on_output>
+    <description/>
+    </mapping>      </output>
+          <parameters>       <variablemapping><variable>file</variable><input>&#x24;&#x7b;file&#x7d;</input></variablemapping>
+       <variablemapping><variable>branch</variable><input>FIELOInt</input></variablemapping>
+    <inherit_all_vars>Y</inherit_all_vars>
+    </parameters>
+    </mappings>
+    <allow_multiple_input>N</allow_multiple_input>
+    <allow_multiple_output>N</allow_multiple_output>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>80</xloc>
+      <yloc>240</yloc>
+      <draw>Y</draw>
+    </GUI>
+    </step>
+
+  <step>
+    <name>Fiedev1</name>
+    <type>Mapping</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <specification_method>filename</specification_method>
+    <trans_object_id/>
+    <trans_name/>
+    <filename>&#x2f;&#x2f;&#x2f;C&#x3a;&#x2f;ETL&#x2f;PMI&#x2f;PermissionSetComparisson&#x2f;transformations&#x2f;readPermissionSet.ktr</filename>
+    <directory_path/>
+    <mappings>
+      <input>
+    <mapping>    <input_step/>
+    <output_step/>
+    <main_path>Y</main_path>
+    <rename_on_output>Y</rename_on_output>
+    <description/>
+    </mapping>      </input>
+      <output>
+    <mapping>    <input_step/>
+    <output_step/>
+    <main_path>Y</main_path>
+    <rename_on_output>N</rename_on_output>
+    <description/>
+    </mapping>      </output>
+          <parameters>       <variablemapping><variable>file</variable><input>&#x24;&#x7b;file&#x7d;</input></variablemapping>
+       <variablemapping><variable>branch</variable><input>Fiedev1</input></variablemapping>
+    <inherit_all_vars>Y</inherit_all_vars>
+    </parameters>
+    </mappings>
+    <allow_multiple_input>N</allow_multiple_input>
+    <allow_multiple_output>N</allow_multiple_output>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>80</xloc>
+      <yloc>352</yloc>
+      <draw>Y</draw>
+    </GUI>
+    </step>
+
+  <step>
+    <name>Remove Columns</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
     <fields>        <select_unspecified>N</select_unspecified>
-      <remove>        <name>object_1</name>
-      </remove>      <remove>        <name>typefield_1</name>
+      <remove>        <name>Section_1</name>
+      </remove>      <remove>        <name>object_1</name>
+      </remove>      <remove>        <name>property_1</name>
+      </remove>      <remove>        <name>Section_2</name>
       </remove>      <remove>        <name>object_2</name>
-      </remove>      <remove>        <name>typefield_2</name>
+      </remove>      <remove>        <name>property_2</name>
+      </remove>      <remove>        <name>Section_3</name>
       </remove>      <remove>        <name>object_3</name>
-      </remove>      <remove>        <name>typefield_3</name>
+      </remove>      <remove>        <name>property_3</name>
       </remove>    </fields>    <cluster_schema/>
     <remotesteps>
       <input>
@@ -1112,15 +1040,15 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>576</xloc>
+      <xloc>464</xloc>
       <yloc>192</yloc>
       <draw>Y</draw>
     </GUI>
     </step>
 
   <step>
-    <name>Sort rows</name>
-    <type>SortRows</type>
+    <name>Output I</name>
+    <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -1129,72 +1057,16 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-      <directory>&#x25;&#x25;java.io.tmpdir&#x25;&#x25;</directory>
-      <prefix>out</prefix>
-      <sort_size>1000000</sort_size>
-      <free_memory/>
-      <compress>N</compress>
-      <compress_variable/>
-      <unique_rows>N</unique_rows>
-    <fields>
-      <field>
-        <name>object</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-      <field>
-        <name>allowCreate</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-      <field>
-        <name>allowDelete</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-      <field>
-        <name>allowEdit</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-      <field>
-        <name>allowRead</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-      <field>
-        <name>modifyAllRecords</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-      <field>
-        <name>viewAllRecords</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-    </fields>
-    <cluster_schema/>
+    <fields>      <field>        <name>Section</name>
+        <rename/>
+      </field>      <field>        <name>object</name>
+        <rename/>
+      </field>      <field>        <name>property</name>
+        <rename/>
+      </field>      <field>        <name>value</name>
+        <rename>Production</rename>
+      </field>        <select_unspecified>N</select_unspecified>
+    </fields>    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -1202,15 +1074,15 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>176</xloc>
-      <yloc>32</yloc>
+      <xloc>224</xloc>
+      <yloc>16</yloc>
       <draw>Y</draw>
     </GUI>
     </step>
 
   <step>
-    <name>Sort rows 2</name>
-    <type>SortRows</type>
+    <name>Output II</name>
+    <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -1219,72 +1091,16 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-      <directory>&#x25;&#x25;java.io.tmpdir&#x25;&#x25;</directory>
-      <prefix>out</prefix>
-      <sort_size>1000000</sort_size>
-      <free_memory/>
-      <compress>N</compress>
-      <compress_variable/>
-      <unique_rows>N</unique_rows>
-    <fields>
-      <field>
-        <name>object</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-      <field>
-        <name>allowCreate</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-      <field>
-        <name>allowDelete</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-      <field>
-        <name>allowEdit</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-      <field>
-        <name>allowRead</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-      <field>
-        <name>modifyAllRecords</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-      <field>
-        <name>viewAllRecords</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-    </fields>
-    <cluster_schema/>
+    <fields>      <field>        <name>Section</name>
+        <rename/>
+      </field>      <field>        <name>object</name>
+        <rename/>
+      </field>      <field>        <name>property</name>
+        <rename/>
+      </field>      <field>        <name>value</name>
+        <rename>MasterIntegration</rename>
+      </field>        <select_unspecified>N</select_unspecified>
+    </fields>    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -1292,15 +1108,15 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>176</xloc>
+      <xloc>224</xloc>
       <yloc>128</yloc>
       <draw>Y</draw>
     </GUI>
     </step>
 
   <step>
-    <name>Compare Branch 2</name>
-    <type>getXMLData</type>
+    <name>Output III</name>
+    <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -1309,148 +1125,16 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <include>N</include>
-    <include_field/>
-    <rownum>N</rownum>
-    <addresultfile>N</addresultfile>
-    <namespaceaware>N</namespaceaware>
-    <ignorecomments>N</ignorecomments>
-    <readurl>N</readurl>
-    <validating>N</validating>
-    <usetoken>N</usetoken>
-    <IsIgnoreEmptyFile>N</IsIgnoreEmptyFile>
-    <doNotFailIfNoFile>Y</doNotFailIfNoFile>
-    <rownum_field/>
-    <encoding>UTF-8</encoding>
-    <file>
-      <name>C&#x3a;&#x5c;ETL&#x5c;PMI&#x5c;PermissionSetComparisson&#x5c;input&#x5c;branch4&#x5c;&#x24;&#x7b;file&#x7d;</name>
-      <filemask/>
-      <exclude_filemask/>
-      <file_required>N</file_required>
-      <include_subfolders>N</include_subfolders>
-    </file>
-    <fields>
-      <field>
-        <name>allowCreate</name>
-        <xpath>&#x2a;&#x5b;name&#x28;&#x29;&#x3d;&#x27;allowCreate&#x27;&#x5d;</xpath>
-        <element_type>node</element_type>
-        <result_type>valueof</result_type>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>allowDelete</name>
-        <xpath>&#x2a;&#x5b;name&#x28;&#x29;&#x3d;&#x27;allowDelete&#x27;&#x5d;</xpath>
-        <element_type>node</element_type>
-        <result_type>valueof</result_type>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>allowEdit</name>
-        <xpath>&#x2a;&#x5b;name&#x28;&#x29;&#x3d;&#x27;allowEdit&#x27;&#x5d;</xpath>
-        <element_type>node</element_type>
-        <result_type>valueof</result_type>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>allowRead</name>
-        <xpath>&#x2a;&#x5b;name&#x28;&#x29;&#x3d;&#x27;allowRead&#x27;&#x5d;</xpath>
-        <element_type>node</element_type>
-        <result_type>valueof</result_type>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>modifyAllRecords</name>
-        <xpath>&#x2a;&#x5b;name&#x28;&#x29;&#x3d;&#x27;modifyAllRecords&#x27;&#x5d;</xpath>
-        <element_type>node</element_type>
-        <result_type>valueof</result_type>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>object</name>
-        <xpath>&#x2a;&#x5b;name&#x28;&#x29;&#x3d;&#x27;object&#x27;&#x5d;</xpath>
-        <element_type>node</element_type>
-        <result_type>valueof</result_type>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>viewAllRecords</name>
-        <xpath>&#x2a;&#x5b;name&#x28;&#x29;&#x3d;&#x27;viewAllRecords&#x27;&#x5d;</xpath>
-        <element_type>node</element_type>
-        <result_type>valueof</result_type>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-    </fields>
-    <limit>0</limit>
-    <loopxpath>&#x2f;&#x2a;&#x5b;name&#x28;&#x29;&#x3d;&#x27;PermissionSet&#x27;&#x5d;&#x2f;&#x2a;&#x5b;name&#x28;&#x29;&#x3d;&#x27;objectPermissions&#x27;&#x5d;</loopxpath>
-    <IsInFields>N</IsInFields>
-    <IsAFile>N</IsAFile>
-    <XmlField/>
-    <prunePath/>
-    <shortFileFieldName/>
-    <pathFieldName/>
-    <hiddenFieldName/>
-    <lastModificationTimeFieldName/>
-    <uriNameFieldName/>
-    <rootUriNameFieldName/>
-    <extensionFieldName/>
-    <sizeFieldName/>
-    <cluster_schema/>
+    <fields>      <field>        <name>Section</name>
+        <rename/>
+      </field>      <field>        <name>object</name>
+        <rename/>
+      </field>      <field>        <name>property</name>
+        <rename/>
+      </field>      <field>        <name>value</name>
+        <rename>FIELOInt</rename>
+      </field>        <select_unspecified>N</select_unspecified>
+    </fields>    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -1458,186 +1142,15 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>64</xloc>
-      <yloc>336</yloc>
-      <draw>Y</draw>
-    </GUI>
-    </step>
-
-  <step>
-    <name>Get data from XML 2</name>
-    <type>getXMLData</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <include>N</include>
-    <include_field/>
-    <rownum>N</rownum>
-    <addresultfile>N</addresultfile>
-    <namespaceaware>N</namespaceaware>
-    <ignorecomments>N</ignorecomments>
-    <readurl>N</readurl>
-    <validating>N</validating>
-    <usetoken>N</usetoken>
-    <IsIgnoreEmptyFile>N</IsIgnoreEmptyFile>
-    <doNotFailIfNoFile>Y</doNotFailIfNoFile>
-    <rownum_field/>
-    <encoding>UTF-8</encoding>
-    <file>
-      <name>C&#x3a;&#x5c;ETL&#x5c;PMI&#x5c;PermissionSetComparisson&#x5c;input&#x5c;branch3&#x5c;&#x24;&#x7b;file&#x7d;</name>
-      <filemask/>
-      <exclude_filemask/>
-      <file_required>N</file_required>
-      <include_subfolders>N</include_subfolders>
-      <name/>
-      <filemask/>
-      <exclude_filemask/>
-      <file_required>N</file_required>
-      <include_subfolders>N</include_subfolders>
-    </file>
-    <fields>
-      <field>
-        <name>allowCreate</name>
-        <xpath>&#x2a;&#x5b;name&#x28;&#x29;&#x3d;&#x27;allowCreate&#x27;&#x5d;</xpath>
-        <element_type>node</element_type>
-        <result_type>valueof</result_type>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>allowDelete</name>
-        <xpath>&#x2a;&#x5b;name&#x28;&#x29;&#x3d;&#x27;allowDelete&#x27;&#x5d;</xpath>
-        <element_type>node</element_type>
-        <result_type>valueof</result_type>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>allowEdit</name>
-        <xpath>&#x2a;&#x5b;name&#x28;&#x29;&#x3d;&#x27;allowEdit&#x27;&#x5d;</xpath>
-        <element_type>node</element_type>
-        <result_type>valueof</result_type>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>allowRead</name>
-        <xpath>&#x2a;&#x5b;name&#x28;&#x29;&#x3d;&#x27;allowRead&#x27;&#x5d;</xpath>
-        <element_type>node</element_type>
-        <result_type>valueof</result_type>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>modifyAllRecords</name>
-        <xpath>&#x2a;&#x5b;name&#x28;&#x29;&#x3d;&#x27;modifyAllRecords&#x27;&#x5d;</xpath>
-        <element_type>node</element_type>
-        <result_type>valueof</result_type>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>object</name>
-        <xpath>&#x2a;&#x5b;name&#x28;&#x29;&#x3d;&#x27;object&#x27;&#x5d;</xpath>
-        <element_type>node</element_type>
-        <result_type>valueof</result_type>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>viewAllRecords</name>
-        <xpath>&#x2a;&#x5b;name&#x28;&#x29;&#x3d;&#x27;viewAllRecords&#x27;&#x5d;</xpath>
-        <element_type>node</element_type>
-        <result_type>valueof</result_type>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-    </fields>
-    <limit>0</limit>
-    <loopxpath>&#x2f;&#x2a;&#x5b;name&#x28;&#x29;&#x3d;&#x27;PermissionSet&#x27;&#x5d;&#x2f;&#x2a;&#x5b;name&#x28;&#x29;&#x3d;&#x27;objectPermissions&#x27;&#x5d;</loopxpath>
-    <IsInFields>N</IsInFields>
-    <IsAFile>N</IsAFile>
-    <XmlField/>
-    <prunePath/>
-    <shortFileFieldName/>
-    <pathFieldName/>
-    <hiddenFieldName/>
-    <lastModificationTimeFieldName/>
-    <uriNameFieldName/>
-    <rootUriNameFieldName/>
-    <extensionFieldName/>
-    <sizeFieldName/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>64</xloc>
+      <xloc>224</xloc>
       <yloc>240</yloc>
       <draw>Y</draw>
     </GUI>
     </step>
 
   <step>
-    <name>Row Normaliser 3</name>
-    <type>Normaliser</type>
+    <name>Output IV</name>
+    <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -1646,26 +1159,16 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-   <typefield>typefield</typefield>
-    <fields>      <field>        <name>allowCreate</name>
-        <value>allowCreate</value>
-        <norm>branch3</norm>
-        </field>      <field>        <name>allowDelete</name>
-        <value>allowDelete</value>
-        <norm>branch3</norm>
-        </field>      <field>        <name>allowEdit</name>
-        <value>allowEdit</value>
-        <norm>branch3</norm>
-        </field>      <field>        <name>allowRead</name>
-        <value>allowRead</value>
-        <norm>branch3</norm>
-        </field>      <field>        <name>modifyAllRecords</name>
-        <value>modifyAllRecords</value>
-        <norm>branch3</norm>
-        </field>      <field>        <name>viewAllRecords</name>
-        <value>viewAllRecords</value>
-        <norm>branch3</norm>
-        </field>      </fields>    <cluster_schema/>
+    <fields>      <field>        <name>Section</name>
+        <rename/>
+      </field>      <field>        <name>object</name>
+        <rename/>
+      </field>      <field>        <name>property</name>
+        <rename/>
+      </field>      <field>        <name>value</name>
+        <rename>Fiedev1</rename>
+      </field>        <select_unspecified>N</select_unspecified>
+    </fields>    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -1673,232 +1176,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>288</xloc>
-      <yloc>240</yloc>
-      <draw>Y</draw>
-    </GUI>
-    </step>
-
-  <step>
-    <name>Row Normaliser 4</name>
-    <type>Normaliser</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-   <typefield>typefield</typefield>
-    <fields>      <field>        <name>allowCreate</name>
-        <value>allowCreate</value>
-        <norm>branch4</norm>
-        </field>      <field>        <name>allowDelete</name>
-        <value>allowDelete</value>
-        <norm>branch4</norm>
-        </field>      <field>        <name>allowEdit</name>
-        <value>allowEdit</value>
-        <norm>branch4</norm>
-        </field>      <field>        <name>allowRead</name>
-        <value>allowRead</value>
-        <norm>branch4</norm>
-        </field>      <field>        <name>modifyAllRecords</name>
-        <value>modifyAllRecords</value>
-        <norm>branch4</norm>
-        </field>      <field>        <name>viewAllRecords</name>
-        <value>viewAllRecords</value>
-        <norm>branch4</norm>
-        </field>      </fields>    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>288</xloc>
-      <yloc>336</yloc>
-      <draw>Y</draw>
-    </GUI>
-    </step>
-
-  <step>
-    <name>Sort rows 3</name>
-    <type>SortRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-      <directory>&#x25;&#x25;java.io.tmpdir&#x25;&#x25;</directory>
-      <prefix>out</prefix>
-      <sort_size>1000000</sort_size>
-      <free_memory/>
-      <compress>N</compress>
-      <compress_variable/>
-      <unique_rows>N</unique_rows>
-    <fields>
-      <field>
-        <name>object</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-      <field>
-        <name>allowCreate</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-      <field>
-        <name>allowDelete</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-      <field>
-        <name>allowEdit</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-      <field>
-        <name>allowRead</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-      <field>
-        <name>modifyAllRecords</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-      <field>
-        <name>viewAllRecords</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-    </fields>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>176</xloc>
-      <yloc>240</yloc>
-      <draw>Y</draw>
-    </GUI>
-    </step>
-
-  <step>
-    <name>Sort rows 2 2</name>
-    <type>SortRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-      <directory>&#x25;&#x25;java.io.tmpdir&#x25;&#x25;</directory>
-      <prefix>out</prefix>
-      <sort_size>1000000</sort_size>
-      <free_memory/>
-      <compress>N</compress>
-      <compress_variable/>
-      <unique_rows>N</unique_rows>
-    <fields>
-      <field>
-        <name>object</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-      <field>
-        <name>allowCreate</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-      <field>
-        <name>allowDelete</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-      <field>
-        <name>allowEdit</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-      <field>
-        <name>allowRead</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-      <field>
-        <name>modifyAllRecords</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-      <field>
-        <name>viewAllRecords</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-    </fields>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>176</xloc>
-      <yloc>336</yloc>
+      <xloc>224</xloc>
+      <yloc>352</yloc>
       <draw>Y</draw>
     </GUI>
     </step>
@@ -1915,16 +1194,16 @@
       <schema_name/>
     </partitioning>
     <join_type>FULL OUTER</join_type>
-    <step0>Row Normaliser</step0>
-    <step1>Row Normaliser 2</step1>
-    <step2>Row Normaliser 3</step2>
-    <step3>Row Normaliser 4</step3>
+    <step0>Output I</step0>
+    <step1>Output II</step1>
+    <step2>Output III</step2>
+    <step3>Output IV</step3>
     <number_input>4</number_input>
     <keys>
-      <key>object,typefield</key>
-      <key>object,typefield</key>
-      <key>object,typefield</key>
-      <key>object,typefield</key>
+      <key>Section,object,property</key>
+      <key>Section,object,property</key>
+      <key>Section,object,property</key>
+      <key>Section,object,property</key>
     </keys>
     <cluster_schema/>
     <remotesteps>
@@ -1934,8 +1213,68 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>432</xloc>
+      <xloc>336</xloc>
       <yloc>192</yloc>
+      <draw>Y</draw>
+    </GUI>
+    </step>
+
+  <step>
+    <name>Filter rows</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+<send_true_to>Microsoft Excel Writer</send_true_to>
+<send_false_to>Dummy &#x28;do nothing&#x29;</send_false_to>
+    <compare>
+<condition>
+ <negated>N</negated>
+ <leftvalue>Section</leftvalue>
+ <function>IS NOT NULL</function>
+ <rightvalue/>
+ </condition>
+    </compare>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>560</xloc>
+      <yloc>192</yloc>
+      <draw>Y</draw>
+    </GUI>
+    </step>
+
+  <step>
+    <name>Dummy &#x28;do nothing&#x29;</name>
+    <type>Dummy</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>560</xloc>
+      <yloc>288</yloc>
       <draw>Y</draw>
     </GUI>
     </step>

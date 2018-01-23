@@ -303,63 +303,8 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>48</xloc>
+      <xloc>128</xloc>
       <yloc>80</yloc>
-    </entry>
-    <entry>
-      <name>Setup</name>
-      <description/>
-      <type>TRANS</type>
-      <specification_method>filename</specification_method>
-      <trans_object_id/>
-      <filename>&#x24;&#x7b;Internal.Job.Filename.Directory&#x7d;&#x5c;transformations&#x5c;setup.ktr</filename>
-      <transname/>
-      <arg_from_previous>N</arg_from_previous>
-      <params_from_previous>N</params_from_previous>
-      <exec_per_row>N</exec_per_row>
-      <clear_rows>N</clear_rows>
-      <clear_files>N</clear_files>
-      <set_logfile>N</set_logfile>
-      <logfile/>
-      <logext/>
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <loglevel>Basic</loglevel>
-      <cluster>N</cluster>
-      <slave_server_name/>
-      <set_append_logfile>N</set_append_logfile>
-      <wait_until_finished>Y</wait_until_finished>
-      <follow_abort_remote>N</follow_abort_remote>
-      <create_parent_folder>N</create_parent_folder>
-      <logging_remote_work>N</logging_remote_work>
-      <parameters>
-        <pass_all_parameters>Y</pass_all_parameters>
-      </parameters>
-      <parallel>N</parallel>
-      <draw>Y</draw>
-      <nr>0</nr>
-      <xloc>144</xloc>
-      <yloc>80</yloc>
-    </entry>
-    <entry>
-      <name>DUMMY</name>
-      <description/>
-      <type>SPECIAL</type>
-      <start>N</start>
-      <dummy>Y</dummy>
-      <repeat>N</repeat>
-      <schedulerType>0</schedulerType>
-      <intervalSeconds>0</intervalSeconds>
-      <intervalMinutes>60</intervalMinutes>
-      <hour>12</hour>
-      <minutes>0</minutes>
-      <weekDay>1</weekDay>
-      <DayOfMonth>1</DayOfMonth>
-      <parallel>N</parallel>
-      <draw>Y</draw>
-      <nr>0</nr>
-      <xloc>144</xloc>
-      <yloc>192</yloc>
     </entry>
     <entry>
       <name>Generate Data</name>
@@ -367,7 +312,7 @@
       <type>TRANS</type>
       <specification_method>filename</specification_method>
       <trans_object_id/>
-      <filename>C&#x3a;&#x5c;ETL&#x5c;PMI&#x5c;PermissionSetComparisson&#x5c;transformations&#x5c;generateDataMasterIntegration.ktr</filename>
+      <filename>C&#x3a;&#x5c;ETL&#x5c;PMI&#x5c;PermissionSetComparisson&#x5c;transformations&#x5c;generateData.ktr</filename>
       <transname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
@@ -389,11 +334,6 @@
       <logging_remote_work>N</logging_remote_work>
       <parameters>
         <pass_all_parameters>Y</pass_all_parameters>
-        <parameter>
-          <name>filename</name>
-          <stream_name>filename</stream_name>
-          <value/>
-        </parameter>
       </parameters>
       <parallel>N</parallel>
       <draw>Y</draw>
@@ -452,39 +392,12 @@
   </entries>
   <hops>
     <hop>
-      <from>START</from>
-      <to>Setup</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>Y</unconditional>
-    </hop>
-    <hop>
-      <from>Setup</from>
-      <to>DUMMY</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>N</evaluation>
-      <unconditional>N</unconditional>
-    </hop>
-    <hop>
       <from>Generate Data</from>
       <to>DUMMY 2</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
       <evaluation>N</evaluation>
-      <unconditional>N</unconditional>
-    </hop>
-    <hop>
-      <from>Setup</from>
-      <to>Delete files</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>Y</evaluation>
       <unconditional>N</unconditional>
     </hop>
     <hop>
@@ -504,6 +417,15 @@
       <enabled>Y</enabled>
       <evaluation>Y</evaluation>
       <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>START</from>
+      <to>Delete files</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>Y</unconditional>
     </hop>
   </hops>
   <notepads>
